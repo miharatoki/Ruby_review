@@ -7,16 +7,25 @@ class User
     @age = age
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
+  def self.full_name(first_name, last_name)
+    p "#{first_name} #{last_name}"
+  end
+
+  def self.create_name(name)
+    p "I am #{name}"
   end
 end
 
-users = []
-users << User.new('Alice', 'Ruby', 20)
+# users = []
+# users << User.new('Alice', 'Ruby', 20)
 # users << User.new('Bob', 'Python', 30)
-p users
 
-users.each do |user|
-  p "氏名: #{user.full_name}, 年齢: #{user.age}"
-end
+
+# users.each do |user|
+#   p "氏名: #{user.full_name}, 年齢: #{user.age}"
+# end
+
+a = "Bob"
+User.create_name(a)
+b = "James"
+User.full_name(a, b)
