@@ -27,6 +27,8 @@ p sums
 
 numbers = [1,2,3,4]
 s = 0
+
+# 94ページ
 numbers.each do |n|
   sum_value = n.even? ? n*10 : n # numbersの中が偶数だった場合はその偶数*１０をしてsum_valueに格納、奇数だった場合はそのまま格納
   s += sum_value
