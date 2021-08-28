@@ -54,3 +54,52 @@ end
 greeting do |text|
   text * 2
 end
+
+
+#callメソッドの引数でブロックに引数を渡せる
+def greeting(&block)
+  puts 'おはよう'
+  p block.nil?
+  text = block.call('こんにちは')
+  puts text
+end
+
+greeting do |text|
+  text*2
+end
+
+
+#ブロックを引数として別のメソッドへ渡せる
+def greeting_ja(&block)
+ texts = ['おはよう','こんにちは','こんばんは']
+ greeting(texts, &block)
+end
+
+def greeting(texts, &block)
+  p texts[0]
+  text = block.call(texts[1])
+  p text
+  p texts[2]
+end
+
+greeting_ja do |text|
+  text*2
+end
+
+proc = Proc.new do
+ 'Hello'
+end
+p proc.call
+
+#ブロック引数に初期値を設定することも可能
+proc = Proc.new{|a=10, b=0| a + b}
+p proc.call
+
+
+def greeting(block)
+  p block.call('おはよう')
+end
+#あらかじめ作成したprocクラスのインスタンスを変数に格納し、引数として渡すこともできる
+repeat_proc = Proc.new{|text| text*2}
+greeting(repeat_proc)
+
